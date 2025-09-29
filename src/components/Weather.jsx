@@ -1,11 +1,9 @@
-import type {WeatherInfo} from "../utils/types";
+import {useSelector} from "react-redux";
 
-interface Props {
-    message: string,
-    weather: Partial<WeatherInfo>
-}
+const Weather = () => {
+    const weather = useSelector(state => state.weatherInfo);
+    const message = useSelector(state => state.message);
 
-const Weather = ({weather, message}:  Props) => {
     if (message) {
         return (
             <div className={'error'}>{message}</div>
@@ -16,7 +14,7 @@ const Weather = ({weather, message}:  Props) => {
             <p>Location: {weather.country}, {weather.city}</p>
             <p>Temp: {weather.temp}</p>
             <p>Pressure: {weather.pressure}</p>
-            <p>Sunset: {weather.sunset!.toLocaleTimeString()}</p>
+            <p>Sunset: {weather.sunset?.toLocaleTimeString()}</p>
         </div>
     )
 }

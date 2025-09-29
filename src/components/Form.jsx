@@ -1,15 +1,14 @@
-import {type FormEvent, useState} from "react";
+import {useState} from "react";
+import {fetchWeather} from "../actions/weatherActions.js";
+import {useDispatch} from "react-redux";
 
-interface Props {
-    getWeather: (city: string) => void
-}
-
-const Form = ({getWeather}: Props) => {
+const Form = () => {
     const [city, setCity] = useState('');
+    const dispatch = useDispatch();
 
-    const handleClickSubmit = (e: FormEvent<HTMLFormElement>) => {
+    const handleClickSubmit = e => {
         e.preventDefault();
-        getWeather(city);
+        dispatch(fetchWeather(city));
         setCity('');
     }
 
