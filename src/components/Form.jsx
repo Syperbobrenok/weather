@@ -1,21 +1,16 @@
-import {useState} from "react";
+// import {useState} from "react";
 
 const Form = ({getWeather}) => {
-    const [city, setCity] = useState('');
 
     const handleClickSubmit = e => {
         e.preventDefault();
+        const city = e.currentTarget.value.trim();
         getWeather(city);
-        setCity('');
     }
 
     return (
         <form onSubmit={handleClickSubmit}>
-            <input
-                type={"text"}
-                value={city}
-                onChange={e => setCity(e.target.value)}
-            />
+            <input type={"text"} name={'city'}/>
             <button type={'submit'}>Get Weather</button>
         </form>
     )
