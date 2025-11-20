@@ -14,7 +14,6 @@ const Form = ({getWeather}) => {
             <button type={'submit'}>Get Weather</button>
         </form>
     )
-
 }
 
 export default Form;
